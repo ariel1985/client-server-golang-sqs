@@ -24,7 +24,7 @@ You also might need to manually run `go mod tidy` to install project dependencie
 You should have an AWS account and working SQS queue.
 Please create **.env** from **env.sample** and type all needed credentials there.
 
-Then **make** and start server:
+Then **make** to compile and start server:
 
 `./server`
 
@@ -43,3 +43,15 @@ You could send commands with client app:
 `./client get {key}` - shows the key and corresponding value if it was set
 
 `./client all` - shows all key-pairs stored to the server
+
+Examples to run on terminal :
+
+```
+./client add key1 key2
+
+./client get key1
+
+./client all
+
+./client delete key1
+```
