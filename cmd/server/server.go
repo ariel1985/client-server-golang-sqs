@@ -99,13 +99,15 @@ func (s *server) worker(ctx context.Context, wg *sync.WaitGroup, id int) {
 				var msg models.Message
 				bytes := []byte(*any.(*string))
 				if err := json.Unmarshal(bytes, &msg); err != nil {
+					fmt.Println("\nREL ::: Error!!! ", err)
 					log.Errorf("Unmarshall : %v", err)
 					s.que.DeleteMessage(ctx, handle)
 				} else {
 					// Process message in separate goroutine
 					go func() {
-						fmt.Println("\nREL ::: Processing message", msg)
+						fmt.Println("\nREL ::: Processing message in server", msg)
 						s.processMessage(msg)
+						fmt.Println("\nREL ::: Deleting message in Queue", msg)
 						defer s.que.DeleteMessage(ctx, handle)
 						// defer - return
 					}()

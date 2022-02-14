@@ -1,7 +1,10 @@
+// module name
 module csgs
 
+// go version
 go 1.16
 
+// include libs from github!
 require (
 	github.com/aws/aws-sdk-go v1.42.12
 	github.com/google/uuid v1.3.0
